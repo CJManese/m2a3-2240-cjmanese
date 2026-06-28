@@ -17,6 +17,19 @@
 import { useState } from 'react'
 
 export default function Toggle() {
-  // TODO: declare boolean state, then return the button and (conditionally) the <p>.
-  return null
+  const [visible, setVisible] = useState(false)
+
+  function handleToggle() {
+    setVisible(!visible)
+  }
+
+  return (
+    <div>
+      <button onClick={handleToggle}>
+        Toggle
+      </button>
+
+      {visible && <p>Now you see me</p>}
+    </div>
+  )
 }
