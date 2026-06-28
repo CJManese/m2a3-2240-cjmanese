@@ -19,6 +19,32 @@
 import { useState } from 'react'
 
 export default function TodoList() {
-  // TODO: declare the two pieces of state, then return the input, button, and list.
-  return null
+  const [text, setText] = useState('')
+  const [todos, setTodos] = useState([])
+
+  function handleAdd() {
+    if (text.trim() === '') return
+
+    setTodos([...todos, text])
+    setText('')
+  }
+
+  return (
+    <div>
+      <input
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+
+      <button onClick={handleAdd}>
+        Add
+      </button>
+
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
